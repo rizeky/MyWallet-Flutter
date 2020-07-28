@@ -1,16 +1,17 @@
-# mywallet
+# MyWallet-Flutter
 
-A new Flutter project.
+My Wallet App is my first app build by Flutter.
+Manage your many wallet from this app.
 
-## Getting Started
+## Libraries or Dependencies
 
-This project is a starting point for a Flutter application.
+  - provider (for State Management)
+  - intl (for Currency Format)
+  - shared_preferences (for Local Database)
 
-A few resources to get you started if this is your first Flutter project:
+## Install to your device
+select one of them 
+  - For arm64 [MyWallet](https://github.com/rizeky/MyWallet-Flutter/build/app/outputs/apk/release/app-arm64-v8a-release.apk)
+  - For arm32 [MyWallet](https://github.com/rizeky/MyWallet-Flutter/build/app/outputs/apk/release/app-armeabi-v7a-release.apk)
+  - For x86-64 [MyWallet](https://github.com/rizeky/MyWallet-Flutter/build/app/outputs/apk/release/app-x86_64-release.apk)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
