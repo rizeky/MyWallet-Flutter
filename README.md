@@ -17,8 +17,8 @@ select one of them
 
 ## Screenshots
 
-![flutter_01](https://github.com/rizeky/MyWallet-Flutter/flutter_01.png)
-![flutter_02](https://github.com/rizeky/MyWallet-Flutter/flutter_02.png)
-![flutter_03](https://github.com/rizeky/MyWallet-Flutter/flutter_03.png)
-![flutter_04](https://github.com/rizeky/MyWallet-Flutter/flutter_04.png)
-![flutter_05](https://github.com/rizeky/MyWallet-Flutter/flutter_05.png)
+![Alt](flutter_01.png)
+![Alt](flutter_02.png)
+![Alt](flutter_03.png)
+![Alt](flutter_04.png)
+![Alt](flutter_05.png)
