@@ -1,23 +1,29 @@
+
+
 class Wallet {
-  Wallet();
-  Wallet.withName(this.name);
-  Wallet.withNameValue(this.name, this.value);
+
+  String name;
+  int totalValue;
+  Map<String, int> details = {};
+
+  Wallet(this.name, {this.details = const {}, this.totalValue = 0});
+  
+  factory Wallet.withName(String name) => Wallet(name);
+  factory Wallet.withNameValue(String name, int totalValue) => Wallet(name, totalValue: totalValue);
+
   Wallet.fromJson(Map<String, dynamic> json): 
-    this.name = json["name"],
-    this.value = json["value"],
-    this.details = json["details"];
+    name = json["name"] as String,
+    totalValue = (json["value"] as num).toInt(),
+    details = json["details"] as Map<String, int>;
 
-  String name = "";
-  int value = 0;
-
-  Map details = <String, int>{};
 
   Map<String, dynamic> toJson() => {
-    "name": this.name,
-    "value": this.value,
-    "details": this.details
+    "name": name,
+    "totalValue": totalValue,
+    "details": details
   };
 
-  String toString() => "${this.name}: ${this.value}";
+  @override
+  String toString() => "name: $totalValue";
   
 }

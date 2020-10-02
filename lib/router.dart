@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'View/Pages.dart';
+import 'view/page.dart';
 // import 'Model/Model.dart';
 
-class Router {
+class XRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => Home());
+        return MaterialPageRoute(builder: (_) => HomePage());
       case '/input':
-        return MaterialPageRoute(builder: (_) => InputWallet());
+        return MaterialPageRoute(builder: (_) => InputWalletPage());
       case '/details':
-        String walletName = settings.arguments;
-        return MaterialPageRoute(builder: (_) => Details(walletName));
+        final String walletName = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => DetailWalletPage(walletName));
         break;
       default:
         return MaterialPageRoute(

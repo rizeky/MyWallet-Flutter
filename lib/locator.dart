@@ -1,0 +1,30 @@
+import 'package:get_it/get_it.dart';
+
+// import 'bloc/bloc.dart';
+import 'model/model.dart';
+// import 'service/service.dart';
+
+GetIt locator = GetIt.instance;
+
+void setupLocator() {
+
+  // Waiting for first launch
+  // locator.registerLazySingleton(() => CoreService(), instanceName: 'Core Service');
+   
+  // locator.registerFactory(() => HomeBloc());
+  
+  // locator.registerSingleton<Ticket>(Ticket.initial(), instanceName: 'Ticket');
+}
+
+Future<void> awaitSetupLocator() async {
+  
+  await locator.allReady();
+
+  // Setup service
+  // await locator.get<CoreService>(instanceName: 'Core Service').init();
+
+  // Setup first bloc
+  // await locator.get<HomeBloc>().init();
+
+  // print("setup locator success");
+}
