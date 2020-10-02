@@ -7,7 +7,7 @@ class XRouter {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => HomePage());
-      case '/input':
+      case '/inputwallet':
         return MaterialPageRoute(builder: (_) => InputWalletPage());
       case '/detailswallet':
         final String walletName = settings.arguments as String;
