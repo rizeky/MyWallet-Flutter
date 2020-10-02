@@ -5,6 +5,8 @@ import 'package:mywallet/share.dart';
 part 'xtopbar.dart';
 part 'xcard.dart';
 part 'xtextfield.dart';
+part 'xbox.dart';
+part 'xtopprogressindicator.dart';
 
 class XSnackBar extends SnackBar {
   XSnackBar({
@@ -38,7 +40,8 @@ class WalletCard<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return XCard(
-      children: <Widget>[
+      child: Column(
+        children: [
         ListTile(
           title: StreamBuilder<T>(
             stream: blocStream,
@@ -69,7 +72,8 @@ class WalletCard<T> extends StatelessWidget {
           onPressed: () => Navigator.pushNamed(context, '/detailswallet', arguments: _wallet),
           child: const Text("See Details",),
         ),
-      ],
+
+      ],)
     );
   }
 }
