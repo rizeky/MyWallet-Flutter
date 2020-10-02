@@ -48,7 +48,7 @@ class DetailWalletPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: XTopBar(
-        textTitle: _walletName,
+        title: Text(_walletName),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -56,9 +56,11 @@ class DetailWalletPage extends StatelessWidget {
             // controller.updateValues();
           },
         ),
-        trailing: IconButton(icon: const Icon(Icons.delete), onPressed: () {
-          Navigator.of(context).pop();
-        },)
+        actions: [
+          IconButton(icon: const Icon(Icons.delete), onPressed: () {
+            Navigator.of(context).pop();
+          })
+        ]
       ),
       body: ListView(
         children: <Widget>[
@@ -93,8 +95,8 @@ class DetailWalletPage extends StatelessWidget {
             color: Theme.of(context).accentColor,
             onPressed: () {
               if (_textNameController.text.isNotEmpty && _textValueController.text.isNotEmpty) { 
-                final String name = _textNameController.text;
-                final int value = int.parse(_textValueController.text);
+                // final String name = _textNameController.text;
+                // final int value = int.parse(_textValueController.text);
               }
               else {
               }
@@ -108,28 +110,30 @@ class DetailWalletPage extends StatelessWidget {
               itemCount: value.length,
               itemBuilder: (context, index) {
                 return XCard(
-                  children: <Widget>[
-                    ListTile(
-                      title: Text(""),
-                      trailing: Text(value),
-                    ),
-                    Divider(thickness: 2,),
-                    Row(
-                      children: <Widget>[
-                        IconButton(icon: Icon(Icons.add), 
-                          onPressed: () => _showDialog(context, "Increment", _walletName, ""), 
-                        ),
-                        IconButton(icon: Icon(Icons.remove), 
-                          onPressed: () => _showDialog(context, "Decrement", _walletName, ""), 
-                        ),
-                        IconButton(icon: Icon(Icons.edit), 
-                          onPressed: () => _showDialog(context, "Edit", _walletName, ""), 
-                        ),
-                        Spacer(),
-                        IconButton(icon: Icon(Icons.delete), onPressed: (){}),
-                      ]
-                    ),
-                  ],
+                  child: Column(
+                    children: <Widget>[
+                      ListTile(
+                        title: const Text(""),
+                        trailing: Text(value),
+                      ),
+                      const Divider(thickness: 2,),
+                      Row(
+                        children: <Widget>[
+                          IconButton(icon: const Icon(Icons.add), 
+                            onPressed: () => _showDialog(context, "Increment", _walletName, ""), 
+                          ),
+                          IconButton(icon: const Icon(Icons.remove), 
+                            onPressed: () => _showDialog(context, "Decrement", _walletName, ""), 
+                          ),
+                          IconButton(icon: const Icon(Icons.edit), 
+                            onPressed: () => _showDialog(context, "Edit", _walletName, ""), 
+                          ),
+                          const Spacer(),
+                          IconButton(icon: const Icon(Icons.delete), onPressed: (){}),
+                        ]
+                      ),
+                    ],
+                  ),
                 );
               }, 
             ),
