@@ -4,18 +4,21 @@ class XTopBar extends AppBar {
   
   XTopBar({
     Key key,
-    String textTitle,
+    Widget title,
     Widget leading,
-    Widget trailing,
+    List<Widget> actions,
     Color backgroundColor,
-    TextStyle textStyle, 
+    bool isLoading = false,
+    bool centerTitle = false,
+    Stream<bool> isLoadingStream  
   }) : super(
     key: key,
     backgroundColor: backgroundColor ?? mainColor,
-    centerTitle: true,
     elevation: 0,
-    title: Text(textTitle, style: textStyle ?? whiteTitle,),
+    title: title,
+    centerTitle: centerTitle,
     leading: leading,
-    actions: [trailing]
+    actions: actions,
+    bottom: isLoading ? XTopLinearProgressIndicator(stream: isLoadingStream,) : null
   );
 }
