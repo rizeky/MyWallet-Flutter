@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mywallet/model/model.dart';
 import 'package:mywallet/share.dart';
 
 part 'xtopbar.dart';
@@ -26,12 +27,12 @@ class XSnackBar extends SnackBar {
 
 class WalletCard<T> extends StatelessWidget {
   
-  const WalletCard(this._walletName, {
+  const WalletCard(this._wallet, {
     Key key,
     this.blocStream
   }) : super(key: key);
 
-  final String _walletName;
+  final Wallet _wallet;
   final Stream<T> blocStream;
 
   @override
@@ -41,7 +42,7 @@ class WalletCard<T> extends StatelessWidget {
         ListTile(
           title: StreamBuilder<T>(
             stream: blocStream,
-            builder: (context, snapshot) => Text(_walletName)
+            builder: (context, snapshot) => Text(_wallet.name)
           ),
           trailing: StreamBuilder<T>(
             stream: blocStream,
@@ -65,7 +66,7 @@ class WalletCard<T> extends StatelessWidget {
         FlatButton(
           color: Theme.of(context).accentColor,
           height: 40,
-          onPressed: () => Navigator.pushNamed(context, '/details', arguments: _walletName),
+          onPressed: () => Navigator.pushNamed(context, '/detailswallet', arguments: _wallet),
           child: const Text("See Details",),
         ),
       ],
