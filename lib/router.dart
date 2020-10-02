@@ -9,7 +9,7 @@ class XRouter {
         return MaterialPageRoute(builder: (_) => HomePage());
       case '/input':
         return MaterialPageRoute(builder: (_) => InputWalletPage());
-      case '/details':
+      case '/detailswallet':
         final String walletName = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => DetailWalletPage(walletName));
         break;
