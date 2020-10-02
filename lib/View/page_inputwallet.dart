@@ -26,7 +26,7 @@ class InputWalletPage extends Page<InputWalletBloc> {
         child: Column(
           children: [
             XTextField(
-              text: 'Wallet Name',
+              labelText: 'Wallet Name',
               controller: _editingController,
             ),
           ],
