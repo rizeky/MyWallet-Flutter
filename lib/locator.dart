@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
-
-// import 'bloc/bloc.dart';
+import 'bloc/bloc.dart';
 // import 'model/model.dart';
 import 'service/service.dart';
 
@@ -10,7 +9,8 @@ void setupLocator() {
 
   locator.registerLazySingleton(() => LocalService());
    
-  // locator.registerFactory(() => HomeBloc());
+  locator.registerFactory(() => HomeBloc());
+  locator.registerFactory(() => InputWalletBloc());
   
   // locator.registerSingleton<Ticket>(Ticket.initial(), instanceName: 'Ticket');
 }
