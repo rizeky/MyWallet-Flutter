@@ -22,7 +22,7 @@ class XTextField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         labelText: text,
-        labelStyle: blackSubtitle,
+        labelStyle: whiteSubtitle,
         suffixIcon: suffixIcon,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6),
