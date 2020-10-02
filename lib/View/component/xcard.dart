@@ -2,7 +2,7 @@ part of 'component.dart';
 
 class XCard extends StatelessWidget {
 
-  final List<Widget> children;
+  final Widget child;
   final GestureTapCallback onTap;
   final ImageProvider backgroundImage;
   final double radiusBorder;
@@ -14,7 +14,7 @@ class XCard extends StatelessWidget {
 
   const XCard({
     Key key,
-    this.children,
+    this.child,
     this.onTap,
     this.backgroundImage,
     this.isBorder = false,
@@ -43,13 +43,9 @@ class XCard extends StatelessWidget {
           ? Ink.image(
             fit: BoxFit.cover,
             image: backgroundImage,
-            child: Column(
-              children: children,
-            ) ?? SizedBox(height: height, width: width,),
+            child: child ?? SizedBox(height: height, width: width,),
           ) 
-          : Column(
-            children: children,
-          ) ?? SizedBox(height: height, width: width,),
+          : child ?? SizedBox(height: height, width: width,),
         ),
       ),
     );
