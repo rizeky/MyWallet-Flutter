@@ -2,14 +2,16 @@ part of 'component.dart';
 
 class XTextField extends StatelessWidget {
 
-  final String text;
+  final String labelText;
+  final TextStyle labelStyle;
   final TextEditingController controller;
   final bool obscureText;
   final Widget suffixIcon;
 
   const XTextField({ 
   Key key,
-  this.text,
+  this.labelText,
+  this.labelStyle,
   this.controller,
   this.obscureText,
   this.suffixIcon
@@ -21,20 +23,20 @@ class XTextField extends StatelessWidget {
       obscureText: obscureText ?? false,
       controller: controller,
       decoration: InputDecoration(
-        labelText: text,
-        labelStyle: whiteSubtitle,
+        labelText: labelText,
+        labelStyle: labelStyle ?? whiteSubtitle,
         suffixIcon: suffixIcon,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6),
           borderSide: BorderSide(
-            color: accentColor,
+            color: mainColor,
             width: 3
           )
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6),
           borderSide: BorderSide(
-            color: mainColor,
+            color: accentColor,
             width: 3
           )
         ),
