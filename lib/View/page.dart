@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mywallet/bloc/bloc.dart';
 import 'package:mywallet/locator.dart';
 import 'package:mywallet/model/model.dart';
+import 'package:mywallet/share.dart';
 
 import 'component/component.dart';
 
