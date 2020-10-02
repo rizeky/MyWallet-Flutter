@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mywallet/locator.dart';
 import 'router.dart';
 
 Future<void> main() async {
+  setupLocator();
+  await awaitSetupLocator();
   runApp(MyApp());
 }
 
