@@ -1,33 +1,35 @@
 part of 'page.dart';
 
-class InputWalletPage extends StatelessWidget {
+class InputWalletPage extends Page<InputWalletBloc> {
   InputWalletPage({Key key}) : super(key: key);
 
   final TextEditingController _editingController = TextEditingController(text: "");
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+  }
+
+  @override
+  void init() {
+    // TODO: implement init
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: XTopBar(
-        textTitle: "Input",
-        leading: const Icon(Icons.account_balance_wallet), 
+        title: Text("Input Wallet", style: whiteTitle,),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12),
-        child: TextField(
-          controller: _editingController,
-          onSubmitted: (value) {
-            if (_editingController.text.isNotEmpty) {
-            }
-            else {
-            
-            }
-          },
-          decoration: InputDecoration(
-            labelText: "Wallet Name",
-            fillColor: Theme.of(context).cardColor,
-            filled: true,
-          ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          children: [
+            XTextField(
+              text: 'Wallet Name',
+              controller: _editingController,
+            ),
+          ],
         ),
       ),
     );
