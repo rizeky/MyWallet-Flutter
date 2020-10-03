@@ -16,15 +16,18 @@ class HomeBloc implements Bloc {
   
   final List<Wallet> _wallets = [];
   int _totalWallet = 0;
-  // List<Wallet> get wallets => _wallets;
 
   Future<List<Wallet>> getWallets() async {
-    await _localService.loadWallets().then((value) => _wallets.addAll(value));
+    _wallets.addAll(_localService.wallets);
     for (final Wallet wallet in _wallets) {
       _totalWallet += wallet.totalValue;
     }
     notifierTotalWalletCurr.value = totalWalletCurr();
     return _wallets;
+  }
+
+  void addWallet() {
+    
   }
 
   String totalWalletCurr() {
