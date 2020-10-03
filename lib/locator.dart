@@ -20,7 +20,7 @@ Future<void> awaitSetupLocator() async {
   await locator.allReady();
 
   // Setup service
-  // await locator.get<CoreService>(instanceName: 'Core Service').init();
+  await locator.get<LocalService>().init();
 
   // Setup first bloc
   // await locator.get<HomeBloc>().init();
