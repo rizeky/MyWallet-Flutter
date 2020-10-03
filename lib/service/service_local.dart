@@ -4,11 +4,27 @@ class LocalService {
 
   final List<Wallet> _wallets = [];
   List<Wallet> get wallets => _wallets;
-  
+
+  Box box;
+
+  Future<void> init() async {
+    
+    await Hive.initFlutter();
+    box = await Hive.openBox('walletsBox');
+    
+    await loadWallets();
+  }
+
+  void saveWallet(Wallet wallet) {
+    _wallets.add(wallet);
+  }
+
   Future<void> saveWallets() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final String encodeWallets = json.encode(wallets);
-    await prefs.setString("encodeWallets", encodeWallets);
+    final Map<String, Map<String, dynamic>> data = {};
+    for (final Wallet wallet in _wallets) {
+      data[wallet.name] = wallet.toJson();
+    }
+    await box.putAll(data);
   }
 
   Future<List<Wallet>> loadWallets() async {
