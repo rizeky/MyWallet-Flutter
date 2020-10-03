@@ -24,7 +24,7 @@ class HomePage extends Page<HomeBloc> {
           (snapshot.data.isNotEmpty) ? ListView.builder(
             itemCount: snapshot.data.length,
             itemBuilder: (context, index) => WalletCard(snapshot.data[index])
-          ) : const Center(child: Text('No wallets found')) 
+          ) : const Center(child: Text('No wallets found'))
           : const Center(child: CircularProgressIndicator(),)
       ),
       floatingActionButton: Builder(
@@ -36,6 +36,7 @@ class HomePage extends Page<HomeBloc> {
             builder: (context) {
 
               final TextEditingController walletNameCon = TextEditingController();
+              final TextEditingController walletValueCon = TextEditingController();
 
               return Material(
                 color: Colors.white,
@@ -52,17 +53,26 @@ class HomePage extends Page<HomeBloc> {
                         controller: walletNameCon,
                       ),
                       const SizedBox(height: 12,),
+                      XTextField(
+                        labelText: 'Wallet Value',
+                        labelStyle: blackSubtitle,
+                        controller: walletValueCon,
+                      ),
+                      const SizedBox(height: 12,),
                       ButtonBar(
                         children: [
                           FlatButton(
                             minWidth: 50,
-                            onPressed: () {},
+                            onPressed: () => Navigator.pop(context),
                             child: Text('CANCEL', style: blackContentRegular,),
                           ),
                           FlatButton(
                             minWidth: 50,
                             color: mainColor,
-                            onPressed: () {},
+                            onPressed: () {
+
+                              Navigator.pop(context);
+                            },
                             child: const Text('CREATE'),
                           ),
                         ],
