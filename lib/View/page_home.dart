@@ -25,7 +25,11 @@ class HomePage extends Page<HomeBloc> {
           child: ListView.separated(
               separatorBuilder: (context, index) => const SizedBox(height: 24),
               itemCount: snapshot.data.length,
-              itemBuilder: (context, index) => WalletCard(snapshot.data[index])
+              itemBuilder: (context, index) => WalletCard(
+                snapshot.data[index],
+                onSubmit: (commit, value) 
+                  => _bloc.addDetailWallet(snapshot.data[index], commit, value),
+              )
             ),
         ) : const Center(child: CircularProgressIndicator(),),
       ),
