@@ -37,12 +37,17 @@ class HomeBloc implements Bloc {
   }
 
   Future<void> addWallet(String name, int value) async {
-   await _localService.saveWallet(Wallet.withNameValue(name, value));
-  _totalWallet += value;
-  notifierTotalWalletCurr.value = totalWalletCurr();
-   
-   _updateWallets();
-   walletsController.sink.add(_wallets);
+    await _localService.saveWallet(Wallet.withNameValue(name, value));
+    _totalWallet += value;
+    notifierTotalWalletCurr.value = totalWalletCurr();
+    
+    _updateWallets();
+    walletsController.sink.add(_wallets);
+  }
+
+  void addDetailWallet(Wallet wallet, String commit, int value) {
+    wallet.addDetail(commit, value);
+    walletsController.sink.add(_wallets);
   }
 
   String totalWalletCurr() {
