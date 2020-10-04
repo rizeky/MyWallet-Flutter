@@ -20,9 +20,11 @@ class XTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      cursorColor: mainColor,
       obscureText: obscureText ?? false,
       controller: controller,
       decoration: InputDecoration(
+        fillColor: blackColor,
         labelText: labelText,
         labelStyle: labelStyle ?? whiteSubtitle,
         suffixIcon: suffixIcon,
