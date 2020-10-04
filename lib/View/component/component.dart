@@ -27,53 +27,48 @@ class XSnackBar extends SnackBar {
   );
 }
 
-class WalletCard<T> extends StatelessWidget {
+class WalletCard extends StatelessWidget {
   
   const WalletCard(this._wallet, {
     Key key,
-    this.blocStream
   }) : super(key: key);
 
   final Wallet _wallet;
-  final Stream<T> blocStream;
 
   @override
   Widget build(BuildContext context) {
     return XCard(
+      color: blackColor,
       child: Column(
         children: [
-        ListTile(
-          title: StreamBuilder<T>(
-            stream: blocStream,
-            builder: (context, snapshot) => Text(_wallet.name)
+          ListTile(
+            title: Text(_wallet.name, style: whiteContentRegular,),
+            subtitle: Text(convertCurrRP(_wallet.totalValue), style: whiteNum),
+            trailing: IconButton(
+              icon: Icon(Icons.add, color: whiteColor), 
+              onPressed: () {},
+            ),
           ),
-          trailing: StreamBuilder<T>(
-            stream: blocStream,
-            builder: (context, snapshot) => Text(snapshot.data as String)
+          Divider(color: whiteColor, indent: 12, endIndent: 12, height: 0,),
+          Builder(
+            builder: (context) => (_wallet.details.isNotEmpty) ? ColumnBuilder(
+              itemCount: _wallet.details.length,
+              itemBuilder: (context, index) {
+                final String name = _wallet.details.keys.toList()[index] as String;
+                final int value = _wallet.details.values.toList()[index] as int;
+                return ListTile(
+                  leading: (value < 0) ? const Icon(Icons.remove, size: 18,) 
+                    : const Icon(Icons.add, size: 18),
+                  title: Text(name),
+                  trailing: Text(convertCurrRP(value)),
+                );
+              },
+            ) : Padding(padding: const EdgeInsets.all(12), 
+                child: Text('No Records', style: whiteContentRegular)
+              )
           ),
-        ),
-        StreamBuilder<T>(
-          stream: blocStream,
-          builder: (context, snapshot) => ColumnBuilder(
-            itemCount: snapshot.data as int,
-            itemBuilder: (context, index) {
-              const String name = "";
-              const String value = "";
-              return const ListTile(
-                title: Text(name),
-                trailing: Text(value),
-              );
-            },
-          )
-        ),
-        FlatButton(
-          color: Theme.of(context).accentColor,
-          height: 40,
-          onPressed: () => Navigator.pushNamed(context, '/detailswallet', arguments: _wallet),
-          child: const Text("See Details",),
-        ),
-
-      ],)
+        ],
+      )
     );
   }
 }
