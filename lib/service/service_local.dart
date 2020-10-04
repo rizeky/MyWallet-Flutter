@@ -21,6 +21,12 @@ class LocalService {
     await box.put(wallet.name, wallet.toJson());
   }
 
+  Future<void> updateWallet(Wallet wallet) async {
+    if (_wallets.contains(wallet)) {
+      
+    }
+  }
+
   Future<void> saveWallets() async {
     final Map<String, Map<String, dynamic>> data = {};
     for (final Wallet wallet in _wallets) {
