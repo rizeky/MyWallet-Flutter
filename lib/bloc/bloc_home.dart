@@ -6,32 +6,47 @@ class HomeBloc implements Bloc {
   final LocalService _localService = locator.get<LocalService>();
   final ValueNotifier<String> notifierTotalWalletCurr = ValueNotifier("Rp0");
 
-  @override
-  void dispose() {}
+  final BehaviorSubject<List<Wallet>> walletsController = BehaviorSubject();
+  Stream<List<Wallet>> get walletsStream => walletsController.stream;
 
   @override
-  void init() {}
+  void dispose() {
+    walletsController.close();
+  }
 
-  final NumberFormat _numRpCurr = NumberFormat.simpleCurrency(name: "Rp", decimalDigits: 0);
+  @override
+  void init() {
+    getWallets();
+  }
   
   final List<Wallet> _wallets = [];
   int _totalWallet = 0;
 
-  Future<List<Wallet>> getWallets() async {
+  void _updateWallets() {
+    _wallets.clear();
+    _wallets.addAll(_localService.wallets);
+  }
+
+  Future<void> getWallets() async {
     _wallets.addAll(_localService.wallets);
     for (final Wallet wallet in _wallets) {
       _totalWallet += wallet.totalValue;
     }
     notifierTotalWalletCurr.value = totalWalletCurr();
-    return _wallets;
+    walletsController.sink.add(_wallets);
   }
 
-  void addWallet() {
-    
+  Future<void> addWallet(String name, int value) async {
+   await _localService.saveWallet(Wallet.withNameValue(name, value));
+  _totalWallet += value;
+  notifierTotalWalletCurr.value = totalWalletCurr();
+   
+   _updateWallets();
+   walletsController.sink.add(_wallets);
   }
 
   String totalWalletCurr() {
-    return _numRpCurr.format(_totalWallet);
+    return convertCurrRP(_totalWallet);
   }
 }
 
