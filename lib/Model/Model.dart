@@ -23,6 +23,16 @@ class Wallet {
     "details": details
   };
 
+  void addDetail(String commit, int value) {
+    String word = '';
+    if (details.containsKey(commit)) {
+      word = '> $commit';  
+    } else {
+      word = commit;
+    }
+    details[word] = value;
+  }
+
   @override
   String toString() => "$name($totalValue)";
   
